@@ -1,0 +1,1497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns="http://utilerias.timbrado.ws.cfdi.solucionfactible.com" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax29="http://utilerias.timbrado.ws.cfdi.solucionfactible.com/xsd" targetNamespace="http://utilerias.timbrado.ws.cfdi.solucionfactible.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>Utilerias</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://utilerias.timbrado.ws.cfdi.solucionfactible.com/xsd">
+      <xs:complexType name="ParametrosBuscar">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cancelada" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="emisorNombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="emisorRFC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaEmisionFin" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fechaEmisionInicio" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fechaTimbradoFin" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fechaTimbradoInicio" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="folio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="limit" type="xs:int" />
+          <xs:element minOccurs="0" name="offset" type="xs:int" />
+          <xs:element minOccurs="0" name="receptorNombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="receptorRFC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponseBuscar">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cantidad" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="cfdis" nillable="true" type="ax29:CFDIDatos" />
+          <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CFDIDatos">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cancelado" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="emisorNombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="emisorRFC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaCancelacion" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fechaEmision" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fechaTimbrado" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="folio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="receptorNombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="receptorRFC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="selloDigital" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="selloSAT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="serie" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="total" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CampoPersonalizado">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="etiqueta" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="valor" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponsePDF">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="pdf" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="status" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponseEnvio">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponseTimbres">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax29:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="contratados" type="xs:long" />
+              <xs:element minOccurs="0" name="disponibles" type="xs:long" />
+              <xs:element minOccurs="0" name="usados" type="xs:long" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ResponseFecha">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax29:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="fecha" nillable="true" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ParametrosEliminarContrato">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="emisorRFC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaContrato" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponseContratosEmisores">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax29:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cantidad" type="xs:int" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="contratosEmisor" nillable="true" type="ax29:ContratosEmisores" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ContratosEmisores">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fecha" nillable="true" type="xs:date" />
+          <xs:element minOccurs="0" name="folios" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="rfc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoContrato" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AcuseRecepcion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="certificate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="digest" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaRecepcion" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="signature" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:int" />
+          <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CFDIResultadoCertificacion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cadenaOriginal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="certificadoSAT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="cfdiTimbrado" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="fechaCancelacion" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fechaTimbrado" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="qrCode" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="selloSAT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:int" />
+          <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="versionTFD" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Emisor">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="domicilioFiscal" nillable="true" type="ax29:DireccionFiscal" />
+          <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="nombreComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="razonSocial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="rfc" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DireccionFiscal">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="calle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="codigoPostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="colonia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="noExt" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="noInt" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="pais" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponseManifiesto">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax29:Response">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="manifiestoContent" nillable="true" type="xs:base64Binary" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ax210="http://utilerias.timbrado.ws.cfdi.solucionfactible.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://utilerias.timbrado.ws.cfdi.solucionfactible.com">
+      <xs:import namespace="http://utilerias.timbrado.ws.cfdi.solucionfactible.com/xsd" />
+      <xs:element name="getFechaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="buscar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="parametros" nillable="true" type="ax210:ParametrosBuscar" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="buscarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponseBuscar" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="generarPDF">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="camposPersonalizados" nillable="true" type="ax210:CampoPersonalizado" />
+            <xs:element minOccurs="0" name="usarDisenoPersonalizado" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="generarPDFResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponsePDF" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="enviar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="enviarPDF" type="xs:boolean" />
+            <xs:element minOccurs="0" name="asunto" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="cuerpo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="camposPersonalizados" nillable="true" type="ax210:CampoPersonalizado" />
+            <xs:element minOccurs="0" name="usarDisenoPersonalizado" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="enviarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponseEnvio" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="registraFirmaManifiesto">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="rfc" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="certificadoFIEL" nillable="true" type="xs:base64Binary" />
+            <xs:element minOccurs="0" name="firma" nillable="true" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="registraFirmaManifiestoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:Response" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getTimbres">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="rfcEmisor" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getTimbresResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponseTimbres" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ping">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="q" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFechaCorte">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFechaCorteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponseFecha" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="eliminaContratosEmisor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="parametros" nillable="true" type="ax210:ParametrosEliminarContrato" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="eliminaContratosEmisorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponseContratosEmisores" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="consultaAcuseRecepcion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="consultaAcuseRecepcionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:AcuseRecepcion" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFoliosEmisor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="rfcEmisor" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="tipoContrato" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFoliosEmisorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponseTimbres" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFoliosImplementacion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="tipoContrato" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFoliosImplementacionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponseTimbres" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getTimbresImplementacion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getTimbresImplementacionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponseTimbres" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarContrato">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="rfcEmisor" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="timbres" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarContratoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:Response" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarContratoTipo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="rfcEmisor" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="folios" type="xs:long" />
+            <xs:element minOccurs="0" name="tipoContrato" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarContratoTipoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:Response" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEstatusCFDI">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="cfdi" nillable="true" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEstatusCFDIResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:CFDIResultadoCertificacion" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEstatusCFDIBase64">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="cfdiBase64" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEstatusCFDIBase64Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:CFDIResultadoCertificacion" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarEmisor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="rfc" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="razonSocial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="nombreComercial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="manifiesto" nillable="true" type="xs:base64Binary" />
+            <xs:element minOccurs="0" name="extensionManifiesto" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarEmisorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:Response" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cambiarEstatusEmisor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="rfcEmisor" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="estatus" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cambiarEstatusEmisorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:Response" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="generarManifiesto">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="emisor" nillable="true" type="ax210:Emisor" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="generarManifiestoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponseManifiesto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarEmisorFirmaFiel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="emisor" nillable="true" type="ax210:Emisor" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarEmisorFirmaFielResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:Response" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarEmisorBase64">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="rfc" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="razonSocial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="nombreComercial" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="manifiestoBase64" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="extensionManifiesto" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarEmisorBase64Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:Response" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarUsuario">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="rfcEmisor" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="emailUsuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="passwordUsuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="admin" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="agregarUsuarioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:Response" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="obtenerPDF">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="camposPersonalizados" nillable="true" type="ax210:CampoPersonalizado" />
+            <xs:element minOccurs="0" name="idDiseno" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="obtenerPDFResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax210:ResponsePDF" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getTimbresRequest">
+    <wsdl:part name="parameters" element="ns:getTimbres" />
+  </wsdl:message>
+  <wsdl:message name="getTimbresResponse">
+    <wsdl:part name="parameters" element="ns:getTimbresResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscarRequest">
+    <wsdl:part name="parameters" element="ns:buscar" />
+  </wsdl:message>
+  <wsdl:message name="buscarResponse">
+    <wsdl:part name="parameters" element="ns:buscarResponse" />
+  </wsdl:message>
+  <wsdl:message name="agregarContratoRequest">
+    <wsdl:part name="parameters" element="ns:agregarContrato" />
+  </wsdl:message>
+  <wsdl:message name="agregarContratoResponse">
+    <wsdl:part name="parameters" element="ns:agregarContratoResponse" />
+  </wsdl:message>
+  <wsdl:message name="agregarContratoTipoRequest">
+    <wsdl:part name="parameters" element="ns:agregarContratoTipo" />
+  </wsdl:message>
+  <wsdl:message name="agregarContratoTipoResponse">
+    <wsdl:part name="parameters" element="ns:agregarContratoTipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="generarPDFRequest">
+    <wsdl:part name="parameters" element="ns:generarPDF" />
+  </wsdl:message>
+  <wsdl:message name="generarPDFResponse">
+    <wsdl:part name="parameters" element="ns:generarPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerPDFRequest">
+    <wsdl:part name="parameters" element="ns:obtenerPDF" />
+  </wsdl:message>
+  <wsdl:message name="obtenerPDFResponse">
+    <wsdl:part name="parameters" element="ns:obtenerPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEstatusCFDIBase64Request">
+    <wsdl:part name="parameters" element="ns:getEstatusCFDIBase64" />
+  </wsdl:message>
+  <wsdl:message name="getEstatusCFDIBase64Response">
+    <wsdl:part name="parameters" element="ns:getEstatusCFDIBase64Response" />
+  </wsdl:message>
+  <wsdl:message name="agregarEmisorRequest">
+    <wsdl:part name="parameters" element="ns:agregarEmisor" />
+  </wsdl:message>
+  <wsdl:message name="agregarEmisorResponse">
+    <wsdl:part name="parameters" element="ns:agregarEmisorResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFechaRequest" />
+  <wsdl:message name="getFechaResponse">
+    <wsdl:part name="parameters" element="ns:getFechaResponse" />
+  </wsdl:message>
+  <wsdl:message name="agregarEmisorBase64Request">
+    <wsdl:part name="parameters" element="ns:agregarEmisorBase64" />
+  </wsdl:message>
+  <wsdl:message name="agregarEmisorBase64Response">
+    <wsdl:part name="parameters" element="ns:agregarEmisorBase64Response" />
+  </wsdl:message>
+  <wsdl:message name="generarManifiestoRequest">
+    <wsdl:part name="parameters" element="ns:generarManifiesto" />
+  </wsdl:message>
+  <wsdl:message name="generarManifiestoResponse">
+    <wsdl:part name="parameters" element="ns:generarManifiestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFoliosImplementacionRequest">
+    <wsdl:part name="parameters" element="ns:getFoliosImplementacion" />
+  </wsdl:message>
+  <wsdl:message name="getFoliosImplementacionResponse">
+    <wsdl:part name="parameters" element="ns:getFoliosImplementacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="registraFirmaManifiestoRequest">
+    <wsdl:part name="parameters" element="ns:registraFirmaManifiesto" />
+  </wsdl:message>
+  <wsdl:message name="registraFirmaManifiestoResponse">
+    <wsdl:part name="parameters" element="ns:registraFirmaManifiestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFechaCorteRequest">
+    <wsdl:part name="parameters" element="ns:getFechaCorte" />
+  </wsdl:message>
+  <wsdl:message name="getFechaCorteResponse">
+    <wsdl:part name="parameters" element="ns:getFechaCorteResponse" />
+  </wsdl:message>
+  <wsdl:message name="pingRequest">
+    <wsdl:part name="parameters" element="ns:ping" />
+  </wsdl:message>
+  <wsdl:message name="pingResponse">
+    <wsdl:part name="parameters" element="ns:pingResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultaAcuseRecepcionRequest">
+    <wsdl:part name="parameters" element="ns:consultaAcuseRecepcion" />
+  </wsdl:message>
+  <wsdl:message name="consultaAcuseRecepcionResponse">
+    <wsdl:part name="parameters" element="ns:consultaAcuseRecepcionResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminaContratosEmisorRequest">
+    <wsdl:part name="parameters" element="ns:eliminaContratosEmisor" />
+  </wsdl:message>
+  <wsdl:message name="eliminaContratosEmisorResponse">
+    <wsdl:part name="parameters" element="ns:eliminaContratosEmisorResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTimbresImplementacionRequest">
+    <wsdl:part name="parameters" element="ns:getTimbresImplementacion" />
+  </wsdl:message>
+  <wsdl:message name="getTimbresImplementacionResponse">
+    <wsdl:part name="parameters" element="ns:getTimbresImplementacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEstatusCFDIRequest">
+    <wsdl:part name="parameters" element="ns:getEstatusCFDI" />
+  </wsdl:message>
+  <wsdl:message name="getEstatusCFDIResponse">
+    <wsdl:part name="parameters" element="ns:getEstatusCFDIResponse" />
+  </wsdl:message>
+  <wsdl:message name="cambiarEstatusEmisorRequest">
+    <wsdl:part name="parameters" element="ns:cambiarEstatusEmisor" />
+  </wsdl:message>
+  <wsdl:message name="cambiarEstatusEmisorResponse">
+    <wsdl:part name="parameters" element="ns:cambiarEstatusEmisorResponse" />
+  </wsdl:message>
+  <wsdl:message name="enviarRequest">
+    <wsdl:part name="parameters" element="ns:enviar" />
+  </wsdl:message>
+  <wsdl:message name="enviarResponse">
+    <wsdl:part name="parameters" element="ns:enviarResponse" />
+  </wsdl:message>
+  <wsdl:message name="agregarUsuarioRequest">
+    <wsdl:part name="parameters" element="ns:agregarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="agregarUsuarioResponse">
+    <wsdl:part name="parameters" element="ns:agregarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFoliosEmisorRequest">
+    <wsdl:part name="parameters" element="ns:getFoliosEmisor" />
+  </wsdl:message>
+  <wsdl:message name="getFoliosEmisorResponse">
+    <wsdl:part name="parameters" element="ns:getFoliosEmisorResponse" />
+  </wsdl:message>
+  <wsdl:message name="agregarEmisorFirmaFielRequest">
+    <wsdl:part name="parameters" element="ns:agregarEmisorFirmaFiel" />
+  </wsdl:message>
+  <wsdl:message name="agregarEmisorFirmaFielResponse">
+    <wsdl:part name="parameters" element="ns:agregarEmisorFirmaFielResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UtileriasPortType">
+    <wsdl:operation name="getTimbres">
+      <wsdl:input wsaw:Action="urn:getTimbres" message="ns:getTimbresRequest" />
+      <wsdl:output wsaw:Action="urn:getTimbresResponse" message="ns:getTimbresResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscar">
+      <wsdl:input wsaw:Action="urn:buscar" message="ns:buscarRequest" />
+      <wsdl:output wsaw:Action="urn:buscarResponse" message="ns:buscarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarContrato">
+      <wsdl:input wsaw:Action="urn:agregarContrato" message="ns:agregarContratoRequest" />
+      <wsdl:output wsaw:Action="urn:agregarContratoResponse" message="ns:agregarContratoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarContratoTipo">
+      <wsdl:input wsaw:Action="urn:agregarContratoTipo" message="ns:agregarContratoTipoRequest" />
+      <wsdl:output wsaw:Action="urn:agregarContratoTipoResponse" message="ns:agregarContratoTipoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generarPDF">
+      <wsdl:input wsaw:Action="urn:generarPDF" message="ns:generarPDFRequest" />
+      <wsdl:output wsaw:Action="urn:generarPDFResponse" message="ns:generarPDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerPDF">
+      <wsdl:input wsaw:Action="urn:obtenerPDF" message="ns:obtenerPDFRequest" />
+      <wsdl:output wsaw:Action="urn:obtenerPDFResponse" message="ns:obtenerPDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEstatusCFDIBase64">
+      <wsdl:input wsaw:Action="urn:getEstatusCFDIBase64" message="ns:getEstatusCFDIBase64Request" />
+      <wsdl:output wsaw:Action="urn:getEstatusCFDIBase64Response" message="ns:getEstatusCFDIBase64Response" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisor">
+      <wsdl:input wsaw:Action="urn:agregarEmisor" message="ns:agregarEmisorRequest" />
+      <wsdl:output wsaw:Action="urn:agregarEmisorResponse" message="ns:agregarEmisorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getFecha">
+      <wsdl:input wsaw:Action="urn:getFecha" message="ns:getFechaRequest" />
+      <wsdl:output wsaw:Action="urn:getFechaResponse" message="ns:getFechaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisorBase64">
+      <wsdl:input wsaw:Action="urn:agregarEmisorBase64" message="ns:agregarEmisorBase64Request" />
+      <wsdl:output wsaw:Action="urn:agregarEmisorBase64Response" message="ns:agregarEmisorBase64Response" />
+    </wsdl:operation>
+    <wsdl:operation name="generarManifiesto">
+      <wsdl:input wsaw:Action="urn:generarManifiesto" message="ns:generarManifiestoRequest" />
+      <wsdl:output wsaw:Action="urn:generarManifiestoResponse" message="ns:generarManifiestoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getFoliosImplementacion">
+      <wsdl:input wsaw:Action="urn:getFoliosImplementacion" message="ns:getFoliosImplementacionRequest" />
+      <wsdl:output wsaw:Action="urn:getFoliosImplementacionResponse" message="ns:getFoliosImplementacionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="registraFirmaManifiesto">
+      <wsdl:input wsaw:Action="urn:registraFirmaManifiesto" message="ns:registraFirmaManifiestoRequest" />
+      <wsdl:output wsaw:Action="urn:registraFirmaManifiestoResponse" message="ns:registraFirmaManifiestoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getFechaCorte">
+      <wsdl:input wsaw:Action="urn:getFechaCorte" message="ns:getFechaCorteRequest" />
+      <wsdl:output wsaw:Action="urn:getFechaCorteResponse" message="ns:getFechaCorteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ping">
+      <wsdl:input wsaw:Action="urn:ping" message="ns:pingRequest" />
+      <wsdl:output wsaw:Action="urn:pingResponse" message="ns:pingResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaAcuseRecepcion">
+      <wsdl:input wsaw:Action="urn:consultaAcuseRecepcion" message="ns:consultaAcuseRecepcionRequest" />
+      <wsdl:output wsaw:Action="urn:consultaAcuseRecepcionResponse" message="ns:consultaAcuseRecepcionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminaContratosEmisor">
+      <wsdl:input wsaw:Action="urn:eliminaContratosEmisor" message="ns:eliminaContratosEmisorRequest" />
+      <wsdl:output wsaw:Action="urn:eliminaContratosEmisorResponse" message="ns:eliminaContratosEmisorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTimbresImplementacion">
+      <wsdl:input wsaw:Action="urn:getTimbresImplementacion" message="ns:getTimbresImplementacionRequest" />
+      <wsdl:output wsaw:Action="urn:getTimbresImplementacionResponse" message="ns:getTimbresImplementacionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEstatusCFDI">
+      <wsdl:input wsaw:Action="urn:getEstatusCFDI" message="ns:getEstatusCFDIRequest" />
+      <wsdl:output wsaw:Action="urn:getEstatusCFDIResponse" message="ns:getEstatusCFDIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cambiarEstatusEmisor">
+      <wsdl:input wsaw:Action="urn:cambiarEstatusEmisor" message="ns:cambiarEstatusEmisorRequest" />
+      <wsdl:output wsaw:Action="urn:cambiarEstatusEmisorResponse" message="ns:cambiarEstatusEmisorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="enviar">
+      <wsdl:input wsaw:Action="urn:enviar" message="ns:enviarRequest" />
+      <wsdl:output wsaw:Action="urn:enviarResponse" message="ns:enviarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarUsuario">
+      <wsdl:input wsaw:Action="urn:agregarUsuario" message="ns:agregarUsuarioRequest" />
+      <wsdl:output wsaw:Action="urn:agregarUsuarioResponse" message="ns:agregarUsuarioResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getFoliosEmisor">
+      <wsdl:input wsaw:Action="urn:getFoliosEmisor" message="ns:getFoliosEmisorRequest" />
+      <wsdl:output wsaw:Action="urn:getFoliosEmisorResponse" message="ns:getFoliosEmisorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisorFirmaFiel">
+      <wsdl:input wsaw:Action="urn:agregarEmisorFirmaFiel" message="ns:agregarEmisorFirmaFielRequest" />
+      <wsdl:output wsaw:Action="urn:agregarEmisorFirmaFielResponse" message="ns:agregarEmisorFirmaFielResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UtileriasSoap11Binding" type="ns:UtileriasPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="buscar">
+      <soap:operation soapAction="urn:buscar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimbres">
+      <soap:operation soapAction="urn:getTimbres" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarContrato">
+      <soap:operation soapAction="urn:agregarContrato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarContratoTipo">
+      <soap:operation soapAction="urn:agregarContratoTipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarPDF">
+      <soap:operation soapAction="urn:generarPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerPDF">
+      <soap:operation soapAction="urn:obtenerPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstatusCFDIBase64">
+      <soap:operation soapAction="urn:getEstatusCFDIBase64" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFecha">
+      <soap:operation soapAction="urn:getFecha" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisor">
+      <soap:operation soapAction="urn:agregarEmisor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisorBase64">
+      <soap:operation soapAction="urn:agregarEmisorBase64" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFoliosImplementacion">
+      <soap:operation soapAction="urn:getFoliosImplementacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarManifiesto">
+      <soap:operation soapAction="urn:generarManifiesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraFirmaManifiesto">
+      <soap:operation soapAction="urn:registraFirmaManifiesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFechaCorte">
+      <soap:operation soapAction="urn:getFechaCorte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ping">
+      <soap:operation soapAction="urn:ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaContratosEmisor">
+      <soap:operation soapAction="urn:eliminaContratosEmisor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaAcuseRecepcion">
+      <soap:operation soapAction="urn:consultaAcuseRecepcion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimbresImplementacion">
+      <soap:operation soapAction="urn:getTimbresImplementacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstatusCFDI">
+      <soap:operation soapAction="urn:getEstatusCFDI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarEstatusEmisor">
+      <soap:operation soapAction="urn:cambiarEstatusEmisor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviar">
+      <soap:operation soapAction="urn:enviar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarUsuario">
+      <soap:operation soapAction="urn:agregarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFoliosEmisor">
+      <soap:operation soapAction="urn:getFoliosEmisor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisorFirmaFiel">
+      <soap:operation soapAction="urn:agregarEmisorFirmaFiel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UtileriasSoap12Binding" type="ns:UtileriasPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="buscar">
+      <soap12:operation soapAction="urn:buscar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimbres">
+      <soap12:operation soapAction="urn:getTimbres" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarContrato">
+      <soap12:operation soapAction="urn:agregarContrato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarContratoTipo">
+      <soap12:operation soapAction="urn:agregarContratoTipo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarPDF">
+      <soap12:operation soapAction="urn:generarPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerPDF">
+      <soap12:operation soapAction="urn:obtenerPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstatusCFDIBase64">
+      <soap12:operation soapAction="urn:getEstatusCFDIBase64" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFecha">
+      <soap12:operation soapAction="urn:getFecha" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisor">
+      <soap12:operation soapAction="urn:agregarEmisor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisorBase64">
+      <soap12:operation soapAction="urn:agregarEmisorBase64" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFoliosImplementacion">
+      <soap12:operation soapAction="urn:getFoliosImplementacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarManifiesto">
+      <soap12:operation soapAction="urn:generarManifiesto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraFirmaManifiesto">
+      <soap12:operation soapAction="urn:registraFirmaManifiesto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFechaCorte">
+      <soap12:operation soapAction="urn:getFechaCorte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ping">
+      <soap12:operation soapAction="urn:ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaContratosEmisor">
+      <soap12:operation soapAction="urn:eliminaContratosEmisor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaAcuseRecepcion">
+      <soap12:operation soapAction="urn:consultaAcuseRecepcion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimbresImplementacion">
+      <soap12:operation soapAction="urn:getTimbresImplementacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstatusCFDI">
+      <soap12:operation soapAction="urn:getEstatusCFDI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarEstatusEmisor">
+      <soap12:operation soapAction="urn:cambiarEstatusEmisor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviar">
+      <soap12:operation soapAction="urn:enviar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarUsuario">
+      <soap12:operation soapAction="urn:agregarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFoliosEmisor">
+      <soap12:operation soapAction="urn:getFoliosEmisor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisorFirmaFiel">
+      <soap12:operation soapAction="urn:agregarEmisorFirmaFiel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UtileriasHttpBinding" type="ns:UtileriasPortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="buscar">
+      <http:operation location="Utilerias/buscar" />
+      <wsdl:input>
+        <mime:content part="buscar" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="buscar" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimbres">
+      <http:operation location="Utilerias/getTimbres" />
+      <wsdl:input>
+        <mime:content part="getTimbres" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getTimbres" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarContrato">
+      <http:operation location="Utilerias/agregarContrato" />
+      <wsdl:input>
+        <mime:content part="agregarContrato" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="agregarContrato" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarContratoTipo">
+      <http:operation location="Utilerias/agregarContratoTipo" />
+      <wsdl:input>
+        <mime:content part="agregarContratoTipo" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="agregarContratoTipo" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarPDF">
+      <http:operation location="Utilerias/generarPDF" />
+      <wsdl:input>
+        <mime:content part="generarPDF" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="generarPDF" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerPDF">
+      <http:operation location="Utilerias/obtenerPDF" />
+      <wsdl:input>
+        <mime:content part="obtenerPDF" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="obtenerPDF" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstatusCFDIBase64">
+      <http:operation location="Utilerias/getEstatusCFDIBase64" />
+      <wsdl:input>
+        <mime:content part="getEstatusCFDIBase64" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getEstatusCFDIBase64" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFecha">
+      <http:operation location="Utilerias/getFecha" />
+      <wsdl:input>
+        <mime:content part="getFecha" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getFecha" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisor">
+      <http:operation location="Utilerias/agregarEmisor" />
+      <wsdl:input>
+        <mime:content part="agregarEmisor" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="agregarEmisor" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisorBase64">
+      <http:operation location="Utilerias/agregarEmisorBase64" />
+      <wsdl:input>
+        <mime:content part="agregarEmisorBase64" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="agregarEmisorBase64" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFoliosImplementacion">
+      <http:operation location="Utilerias/getFoliosImplementacion" />
+      <wsdl:input>
+        <mime:content part="getFoliosImplementacion" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getFoliosImplementacion" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarManifiesto">
+      <http:operation location="Utilerias/generarManifiesto" />
+      <wsdl:input>
+        <mime:content part="generarManifiesto" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="generarManifiesto" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraFirmaManifiesto">
+      <http:operation location="Utilerias/registraFirmaManifiesto" />
+      <wsdl:input>
+        <mime:content part="registraFirmaManifiesto" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="registraFirmaManifiesto" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFechaCorte">
+      <http:operation location="Utilerias/getFechaCorte" />
+      <wsdl:input>
+        <mime:content part="getFechaCorte" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getFechaCorte" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ping">
+      <http:operation location="Utilerias/ping" />
+      <wsdl:input>
+        <mime:content part="ping" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="ping" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaContratosEmisor">
+      <http:operation location="Utilerias/eliminaContratosEmisor" />
+      <wsdl:input>
+        <mime:content part="eliminaContratosEmisor" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="eliminaContratosEmisor" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaAcuseRecepcion">
+      <http:operation location="Utilerias/consultaAcuseRecepcion" />
+      <wsdl:input>
+        <mime:content part="consultaAcuseRecepcion" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="consultaAcuseRecepcion" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimbresImplementacion">
+      <http:operation location="Utilerias/getTimbresImplementacion" />
+      <wsdl:input>
+        <mime:content part="getTimbresImplementacion" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getTimbresImplementacion" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstatusCFDI">
+      <http:operation location="Utilerias/getEstatusCFDI" />
+      <wsdl:input>
+        <mime:content part="getEstatusCFDI" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getEstatusCFDI" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarEstatusEmisor">
+      <http:operation location="Utilerias/cambiarEstatusEmisor" />
+      <wsdl:input>
+        <mime:content part="cambiarEstatusEmisor" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="cambiarEstatusEmisor" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviar">
+      <http:operation location="Utilerias/enviar" />
+      <wsdl:input>
+        <mime:content part="enviar" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="enviar" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarUsuario">
+      <http:operation location="Utilerias/agregarUsuario" />
+      <wsdl:input>
+        <mime:content part="agregarUsuario" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="agregarUsuario" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFoliosEmisor">
+      <http:operation location="Utilerias/getFoliosEmisor" />
+      <wsdl:input>
+        <mime:content part="getFoliosEmisor" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getFoliosEmisor" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmisorFirmaFiel">
+      <http:operation location="Utilerias/agregarEmisorFirmaFiel" />
+      <wsdl:input>
+        <mime:content part="agregarEmisorFirmaFiel" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="agregarEmisorFirmaFiel" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Utilerias">
+    <wsdl:port name="UtileriasHttpSoap11Endpoint" binding="ns:UtileriasSoap11Binding">
+      <soap:address location="" />
+    </wsdl:port>
+    <wsdl:port name="UtileriasHttpsSoap11Endpoint" binding="ns:UtileriasSoap11Binding">
+      <soap:address location="https://solucionfactible.com/ws/services/Utilerias.UtileriasHttpsSoap11Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="UtileriasHttpSoap12Endpoint" binding="ns:UtileriasSoap12Binding">
+      <soap12:address location="" />
+    </wsdl:port>
+    <wsdl:port name="UtileriasHttpsSoap12Endpoint" binding="ns:UtileriasSoap12Binding">
+      <soap12:address location="https://solucionfactible.com/ws/services/Utilerias.UtileriasHttpsSoap12Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="UtileriasHttpEndpoint" binding="ns:UtileriasHttpBinding">
+      <http:address location="" />
+    </wsdl:port>
+    <wsdl:port name="UtileriasHttpsEndpoint" binding="ns:UtileriasHttpBinding">
+      <http:address location="https://solucionfactible.com/ws/services/Utilerias.UtileriasHttpsEndpoint/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E087BE59-A421-4CEB-9A3E-28EFA392F295}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>KFactuSat</RootNamespace>
+    <AssemblyName>KFactuSat</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\com.sf.ws.Timbrado\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\com.sf.ws.Utilerias\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sat\anexo\CFDV40\CartaPorte20.cs" />
+    <Compile Include="Sat\anexo\CFDV40\CFDV40.cs" />
+    <Compile Include="Sat\anexo\CFDV40\Pago20.cs" />
+    <Compile Include="Sat\anexo\CFDV33\CFDIv33.cs" />
+    <Compile Include="Sat\anexo\CFDV33\Pago10.cs" />
+    <Compile Include="Sat\anexo\TimbradoFiscalDigital.cs" />
+    <Compile Include="Sat\lib\FactuSat.cs" />
+    <Compile Include="Sat\lib\Timbrado.cs" />
+    <Compile Include="Sat\lib\Utilerias.cs" />
+    <Compile Include="Sat\lib\WcfConfigFactory.cs" />
+    <Compile Include="Sat\utils\filters.cs" />
+    <Compile Include="Sat\utils\ModoDeserializado.cs" />
+    <Compile Include="Sat\utils\opensslkey.cs" />
+    <Compile Include="Sat\utils\QR.cs" />
+    <Compile Include="Sat\utils\SelloDigital.cs" />
+    <Compile Include="Sat\utils\StringWriterWithEncoding.cs" />
+    <Compile Include="Sat\utils\XElementG.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Connected Services\com.sf.ws.Timbrado\KFactuSat.com.sf.ws.Timbrado.cancelarBase64Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Timbrado\KFactuSat.com.sf.ws.Timbrado.cancelarPorNotaCreditoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Timbrado\KFactuSat.com.sf.ws.Timbrado.cancelarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Timbrado\KFactuSat.com.sf.ws.Timbrado.cancelarViaCSDAlmacenadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Timbrado\KFactuSat.com.sf.ws.Timbrado.CFDICancelacion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Timbrado\KFactuSat.com.sf.ws.Timbrado.CFDICertificacion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Timbrado\KFactuSat.com.sf.ws.Timbrado.CFDIResultadoCertificacion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Timbrado\KFactuSat.com.sf.ws.Timbrado.enviarSolicitudCancelacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Timbrado\KFactuSat.com.sf.ws.Timbrado.timbrarBase64Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Timbrado\KFactuSat.com.sf.ws.Timbrado.timbrarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Timbrado\Timbrado.wsdl" />
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.AcuseRecepcion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.agregarContratoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.agregarContratoTipoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.agregarEmisorBase64Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.agregarEmisorFirmaFielResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.agregarEmisorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.agregarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.buscarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.cambiarEstatusEmisorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.CFDIResultadoCertificacion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.consultaAcuseRecepcionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.eliminaContratosEmisorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.enviarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.generarManifiestoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.generarPDFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.getEstatusCFDIBase64Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.getEstatusCFDIResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.getFechaCorteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.getFechaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.getFoliosEmisorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.getFoliosImplementacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.getTimbresImplementacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.getTimbresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.obtenerPDFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.pingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.registraFirmaManifiestoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.ResponseBuscar.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.ResponseContratosEmisores.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.ResponseEnvio.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.ResponseFecha.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.ResponseManifiesto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.ResponsePDF.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\KFactuSat.com.sf.ws.Utilerias.ResponseTimbres.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\com.sf.ws.Utilerias\Utilerias.wsdl" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\com.sf.ws.Timbrado\" />
+    <WCFMetadataStorage Include="Connected Services\com.sf.ws.Utilerias\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\com.sf.ws.Timbrado\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\com.sf.ws.Timbrado\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\com.sf.ws.Timbrado\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\com.sf.ws.Utilerias\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\com.sf.ws.Utilerias\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\com.sf.ws.Utilerias\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sat\anexo\cadenaoriginal\aerolineas.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\cadenaoriginal_4_0.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\CartaPorte20.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\certificadodedestruccion.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\cfdiregistrofiscal.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\ComercioExterior11.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\consumodeCombustibles11.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\detallista.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\divisas.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\donat11.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\ecc12.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\GastosHidrocarburos10.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\iedu.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\implocal.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\ine11.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\IngresosHidrocarburos.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\leyendasFisc.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\nomina12.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\notariospublicos.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\obrasarteantiguedades.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\pagoenespecie.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\Pagos20.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\pfic.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\renovacionysustitucionvehiculos.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\servicioparcialconstruccion.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\TuristaPasajeroExtranjero.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\utilerias.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\valesdedespensa.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\vehiculousado.xslt" />
+    <Content Include="Sat\anexo\cadenaoriginal\ventavehiculos11.xslt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,64 @@
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+artifacts/
+TestResults/
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+.nuget/packages/
+!**/packages/build/
+!**/packages/build/**
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.cache
+*.bak
+*.old
+*~
+*.pdb
+*.mdb
+
+# Visual Studio generated files
+*.csproj.user
+*.Publish.xml
+*.pubxml.user
+*.azurePubxml
+*.build.csdef
+*.opendb
+*.VC.db
+
+# ReSharper / Rider
+_ReSharper*/
+*.DotSettings.user
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local configuration / secrets
+.env
+.env.*
+!.env.example
+**/App.Debug.config
+**/App.Release.config
+  

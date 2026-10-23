@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFactuSat", "KFactuSat\KFactuSat.csproj", "{E087BE59-A421-4CEB-9A3E-28EFA392F295}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E087BE59-A421-4CEB-9A3E-28EFA392F295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E087BE59-A421-4CEB-9A3E-28EFA392F295}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E087BE59-A421-4CEB-9A3E-28EFA392F295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E087BE59-A421-4CEB-9A3E-28EFA392F295}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB7AE954-03DD-453B-BEE1-275FB6955E0B}
+	EndGlobalSection
+EndGlobal
